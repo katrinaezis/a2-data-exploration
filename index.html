@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Exploration</title>
+
+    <!-- Libraries -->
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://d3js.org/d3.v4.js"></script>
+
+    <!-- Custom files -->
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body class="container">
+    <h1>Airline Safety</h1>
+    <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-primary">
+            <input value="incident_85_99" type="radio" name="options" id="option1" autocomplete="off" checked="true">Incidents
+        </label>
+        <label class="btn btn-primary">
+            <input value="fatal_accidents_85_99" type="radio" name="options" id="option2" autocomplete="off" >Fatal Accidents
+        </label>
+        <label class="btn btn-primary active">
+            <input value="fatalities_85_99" type="radio" name="options" id="option3" autocomplete="off">Fatalities
+        </label>
+    </div>
+   <svg width="960" height="500"></svg>
+</body>
+
+<!-- your script file -->
+<script src="js/main.js"></script>
+
+</html>
