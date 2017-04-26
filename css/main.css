@@ -17,7 +17,47 @@
   opacity: .7;
 }
 
-.jumbotron {
+.header {
     background-color: #3f51b5;
     color: #e8eaf6;
+}
+
+.defense-header {
+  background-color: white;
+  color: #424242;
+  padding-bottom: 10px !important;
+  margin-bottom: 0;
+}
+
+.defense-header > .container > h3 {
+  color: #3f51b5;
+}
+
+.defense-body, .defense-header > .container {
+  width: 80%;
+}
+
+.btn-group {
+  margin-right: 20%;
+  float: right;
+}
+
+.d3-tip {
+  text-align: center;
+  background-color: #424242;
+  opacity: .8;
+  color:#e8eaf6;
+}
+
+.lead {
+  margin-bottom: 0 !important;
+}
+
+.defense-body {
+  font-size: 12pt !important;
+  margin-bottom: 5%;
+}
+
+#graph {
+  text-align: center;
 }

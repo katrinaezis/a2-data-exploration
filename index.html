@@ -13,6 +13,8 @@
     <script src="http://d3js.org/d3.v4.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.js"></script>
     <link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
     <!-- Custom files -->
     <link rel="stylesheet" href="css/main.css" />
@@ -22,30 +24,54 @@
 </head>
 
 <body>
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid header">
         <div class="container"> 
-            <h1 class="display-3">Airline Safety</h1>
-            <h3 class="lead">Which airline is the safest?</h3>
-            <h5>We took a look at many of the major airlines and comapred their values for in-flight
-                incidents, fatal accidents, and fatalities.
-            </h5>
-            <h6>An * next to an airline indicates  that regional subsidiaries are included</h6>
+            <h1 class="display-1">Airline Safety <i class="fa fa-plane" aria-hidden="true"></i></h1>
+            <h3 class="display-4">Which airline is least safe?</h3>
+            <p class="lead">We took a look at many of the major airlines and comapred their values for in-flight
+                incidents, fatal accidents, and fatalities between the years 2000 and 2014.
+            </p>
+            <p class="lead">An * next to an airline indicates  that regional subsidiaries are included.</p>
         </div>
     </div>
 
-    <div class="container">
+    <div id="graph" class="container">
         <div class="btn-group" data-toggle="buttons">
             <label class="btn btn-primary  active">
-                <input value="incidents_85_99" type="radio" name="options" id="option1" autocomplete="off" checked>Incidents
+                <input value="incidents_00_14" type="radio" name="options" id="option1" autocomplete="off" checked>Incidents
             </label>
             <label class="btn btn-primary">
-                <input value="fatal_accidents_85_99" type="radio" name="options" id="option2" autocomplete="off" >Fatal Accidents
+                <input value="fatal_accidents_00_14" type="radio" name="options" id="option2" autocomplete="off" >Fatal Accidents
             </label>
             <label class="btn btn-primary">
-                <input value="fatalities_85_99" type="radio" name="options" id="option3" autocomplete="off">Fatalities
+                <input value="fatalities_00_14" type="radio" name="options" id="option3" autocomplete="off">Fatalities
             </label>
         </div>
     <svg width="1000" height="600"></svg>
    </div>
+   <div class="jumbotron jumbotron-fluid defense-header">
+        <div class="container"> 
+            <h3 class="display-4">Defense of Design Choices</h3>
+            <p>We took a look at many of the major airlines and comapred their values for in-flight
+                incidents, fatal accidents, and fatalities. Thank you to <a href="https://github.com/fivethirtyeight/data/tree/master/airline-safety">FiveThirtyEight</a> for collecting this awesome data!</p>
+        </div>
+    </div>
+     <div class="container defense-body"> 
+        <p>I chose to represent my data as a bar chart for many reasons. When viewing a bar chart, the viewer judges
+             position along a common scale. This allows the users to make quick generalizations about the data. For example it is clear
+             to see that Delta/Northwest had the most in-flight incidents. If the viewer wants more detailed information about a certain
+             line I added tooltips to give more detailed information. They repeat the name of the airline and the value that bar is representing.
+             Due to the large number of airlines, the x-axis labels can be hard to read. To combat this issue I added the name of the airline to the
+             tooltip.</p>
+        <p>I allow the viewer to select between incidents, fatal accidents, and total fatalities. This will allow them to gain more insight into the data.
+            If the user is viewing incidents and then switches to fatalities and sees a large discrepancy they can look further into that information. For example Malaysia Airlines
+            doesn't seem to have very many incidents, but leads in regards to fatalities. If the viewer finds this interesting they can look further into that incident. The number
+            of ticks on the yAxis changes dependant on the max of the data being shown. This helps the viewer understand the data.
+        </p>
+        <p>I chose to color this page purple. I thought this was a visually appealing color that conformed to modern color standards. I increased
+            the opacity of the bars so that they also conformed to modern standards. I changed the tooltip color so that it fit with the chosen colors and
+            is easy to read. 
+        </p>
+    </div>
 </body>
 </html>

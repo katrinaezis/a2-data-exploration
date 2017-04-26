@@ -2,6 +2,7 @@ $(function() {
     // reads in data
     var measure;
     var labelText;
+    var ticks;
     d3.csv('data/airline-safety.csv', function(error, data) {
         // if there is an error
         // prints error to console and returns
@@ -18,13 +19,13 @@ $(function() {
         var svg = d3.select("svg"),
             margin = {
                 top: 20, 
-                right: 20, 
+                right: 40, 
                 bottom: 150, 
                 left: 60
             },
             width = +svg.attr("width") - margin.left - margin.right,
             height = +svg.attr("height") - margin.top - margin.bottom,
-            measure = 'incidents_85_99';
+            measure = 'incidents_00_14';
             labelText = "Incidents"
 
         // Appends a 'g' element to our svg
@@ -56,14 +57,13 @@ $(function() {
 
         // appends text to yaxis
         var yAxisText = svg.append('text')
-            .attr('transform', 'translate(' + (margin.left - 40) + ',' + (margin.top + height / 2) + ') rotate(-90)')
+            .attr('transform', 'translate(' + (margin.left - 30) + ',' + (margin.top + height / 2) + ') rotate(-90)')
             .attr('class', 'title');
 
         // Defines x and y axis using bottom and left positions
         // scale will be set later
         var xAxis = d3.axisBottom(),
-            yAxis = d3.axisLeft()
-                .tickFormat(d3.format('.2s'));
+            yAxis = d3.axisLeft();
         
         // define x and y scale with d3.scaleBand
         // domain and range will be set in setscales
@@ -85,6 +85,7 @@ $(function() {
             var yMax = d3.max(data, function(d) {
                 return d[measure] = +d[measure];
             });
+            ticks = yMax % 10;
 
             yScale.range([height, 0])
                 .domain([0, yMax]);
@@ -92,20 +93,20 @@ $(function() {
 
         var setAxes = function() {
             xAxis.scale(xScale);
-            yAxis.scale(yScale);
+            yAxis.scale(yScale).ticks(ticks);
             xAxisLabel.transition().duration(1500).call(xAxis)
                 .selectAll("text")	
-                    .style("text-anchor", "end")
-                    .attr("dx", "-.8em")
+                    .style("text-anchor", "start")
+                    .attr("dx", ".8em")
                     .attr("dy", ".15em")
-                    .attr("transform", "rotate(-65)");
+                    .attr("transform", "rotate(50)");
             yAxisLabel.transition().duration(1500).call(yAxis);
             xAxisText.text("Airline");
-            yAxisText.text('Occurance Number');
+            yAxisText.text('Number of ' + labelText);
         }
 
         var tip = d3.tip().attr('class', 'd3-tip').html(function(d) {
-            return d.airline;
+            return d.airline + "<br>" + d[measure];
         });
         g.call(tip);
 
@@ -139,41 +140,13 @@ $(function() {
                 });
             
             bars.exit().remove();
-
-            // bars.remove()
-
-            // var yAxis = d3.svg.axis()
-            //     .scale(y)
-            //     .attr("class", "axis axis--y")
-            //     .call(d3.axisLeft(y).ticks(10))
-            //     .append("text")
-            //     .attr("transform", "rotate(-90)")
-            //     .attr("y", 6)
-            //     .attr("dy", ".71em")
-            //     .style("text-anchor", "end")
-            //     .text("Frequency");
-            
-            // var xAxis = d3.svg.axis()
-            //     .scale(x)
-            //     .attr("class", "axis axis--x")
-            //     .attr("transform", "translate(0," + height + ")")
-            //     .call(d3.axisBottom(x))
-
-            // g.selectAll("rect")
-            //     .data(data)
-            //     .enter().append("rect")
-            //         .attr("class", "bar")
-            //         .attr("x", function(d) { return x(d.airline); })
-            //         .attr("y", function(d) { return y(d[measure]); })
-            //         .attr("width", x.bandwidth())
-            //         .attr("height", function(d) { return height - y(d[measure]); });
         }
 
         draw();
 
         $("input").on('change', function() {
             measure = $(this).val();
-            labelText = $('btn').text();
+            labelText = $(this).parent().text();
             console.log(labelText);
             draw();
         });     
