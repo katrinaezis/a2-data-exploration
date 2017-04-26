@@ -11,28 +11,41 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="http://d3js.org/d3.v4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.js"></script>
+    <link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">
 
     <!-- Custom files -->
     <link rel="stylesheet" href="css/main.css" />
+
+    <!-- your script file -->
+    <script src="js/main.js"></script>
 </head>
 
-<body class="container">
-    <h1>Airline Safety</h1>
-    <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-primary">
-            <input value="incident_85_99" type="radio" name="options" id="option1" autocomplete="off" checked="true">Incidents
-        </label>
-        <label class="btn btn-primary">
-            <input value="fatal_accidents_85_99" type="radio" name="options" id="option2" autocomplete="off" >Fatal Accidents
-        </label>
-        <label class="btn btn-primary active">
-            <input value="fatalities_85_99" type="radio" name="options" id="option3" autocomplete="off">Fatalities
-        </label>
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container"> 
+            <h1 class="display-3">Airline Safety</h1>
+            <h3 class="lead">Which airline is the safest?</h3>
+            <h5>We took a look at many of the major airlines and comapred their values for in-flight
+                incidents, fatal accidents, and fatalities.
+            </h5>
+            <h6>An * next to an airline indicates  that regional subsidiaries are included</h6>
+        </div>
     </div>
-   <svg width="960" height="500"></svg>
+
+    <div class="container">
+        <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-primary  active">
+                <input value="incidents_85_99" type="radio" name="options" id="option1" autocomplete="off" checked>Incidents
+            </label>
+            <label class="btn btn-primary">
+                <input value="fatal_accidents_85_99" type="radio" name="options" id="option2" autocomplete="off" >Fatal Accidents
+            </label>
+            <label class="btn btn-primary">
+                <input value="fatalities_85_99" type="radio" name="options" id="option3" autocomplete="off">Fatalities
+            </label>
+        </div>
+    <svg width="1000" height="600"></svg>
+   </div>
 </body>
-
-<!-- your script file -->
-<script src="js/main.js"></script>
-
 </html>

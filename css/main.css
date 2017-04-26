@@ -1,0 +1,23 @@
+.axis line,
+.axis path {
+  fill: none;
+  stroke: #000;
+}
+
+.title {
+  text-anchor: middle;
+}
+
+.axis text {
+  font-size: 10px;
+}
+
+.bar {
+  fill: #5c6bc0;
+  opacity: .7;
+}
+
+.jumbotron {
+    background-color: #3f51b5;
+    color: #e8eaf6;
+}
